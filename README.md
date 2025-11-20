@@ -1,15 +1,12 @@
 # vite-template-redux
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
 
-```sh
-npx tiged reduxjs/redux-templates/packages/vite-template-redux my-app
-```
 
 ## Goals
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
+- Build a reddit api minimalist app using React - Redux / toolkiy
+- A beginner friendly application to test build patterns
 - Optimized performance compared to Create React App
 - Customizable without ejecting
 
