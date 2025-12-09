@@ -2,11 +2,12 @@ import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { postsApiSlice } from "../features/posts/postsApiSlice"
+import { bucketSlice } from "../features/navigation/bucketSlice"
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
 
-const rootReducer = combineSlices(postsApiSlice)//replace with my slices
+const rootReducer = combineSlices(postsApiSlice, bucketSlice)//replace with my slices
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 

@@ -7,46 +7,25 @@ export interface SubredditPosts {
   [subreddit: string]: PostType[]
 }
 
-const dummyData: SubredditPosts = {
-  educatinggifs: [
-    {
-      title: "This is what a Magic Eye (autostereogram) image looks like",
-      media: {
-        type: "gif",
-        url: "https://i.redd.it/lwz0amr7il5g1.gif",
-        width: 800,
-        height: 515,
-      },
-      upvote_ratio: 0.9,
-    },
-    {
-      title: "The cardiac cycle",
-      media: {
-        type: "video",
-        url: "https://v.redd.it/z5k5iawcelkf1/DASH_480.mp4?source=fallback",
-        width: 720,
-        height: 480,
-      },
-      upvote_ratio: 0.85,
-    },
-    {
-      title: "Interesting GIF showing a 3D effect",
-      media: {
-        type: "gif",
-        url: "https://i.redd.it/hijk5678lmn9.gif",
-        width: 720,
-        height: 540,
-      },
-      upvote_ratio: 0.92,
-    },
-  ],
-}
-
 
 export const Posts: React.FC = () => {
+  const selectedBucket = useAppSelector(state => state.bucket.selectedBucket)
+  console.log(selectedBucket)
+
+  const {data, isLoading, error} = useGetPostsQuery({
+    subReddit: selectedBucket
+  })
+
+  if(isLoading) return <div>Loading...</div>
+  if(error || !data) return <div>error loading posts</div>
+
+
   return (
     <>
-      {dummyData.educatinggifs.map((post, index) => (
+      {data?.posts
+      .filter(post => post.media !== null) // where no media returned
+      .filter(post => !post.title?.toLowerCase().includes("nsfw")) //clear out any inappropriate
+      .map((post, index) => (
         <Post key={index} data={post} id={index} />
       ))}
     </>

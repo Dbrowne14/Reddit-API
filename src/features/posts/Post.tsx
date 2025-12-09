@@ -11,23 +11,28 @@ const renderMedia = (media: Media | null) => {
     return null
   }
 
-  const {width, height, type} = media
+  const { width, height, type } = media
   const aspectRatio = width / height
   const size = 300
 
   if (type === "gif") {
-    return <img src={media?.url} width={size*aspectRatio} height={size} />
+    return <img src={media?.url} width={size * aspectRatio} height={size} />
   }
   if (type === "video") {
     return (
-      <video src={media?.url} width={size*aspectRatio} height={size} autoPlay controls/>
+      <video
+        src={media?.url}
+        width={size * aspectRatio}
+        height={size}
+        playsInline
+        muted
+        controls
+      />
     )
   }
 }
 
-
 export const Post = ({ data, id }: PostProps) => {
-
   return (
     <div className="visualBundle" id={String(id)}>
       {renderMedia(data.media)}

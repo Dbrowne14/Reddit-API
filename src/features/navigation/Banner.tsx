@@ -1,11 +1,14 @@
+import { useAppDispatch } from "../../app/hooks"
+import { setBucket } from "./bucketSlice"
 
 export const Banner: React.FC = () => {
-  
+  const dispatch = useAppDispatch()
+
   const subRedditList = [
-  "educationalgifs",
-  "dataisbeautiful",
-  "coolguides",
-  "mechanical_gifs",
+    "educationalgifs",
+    "perfectloops",
+    "Cinemagraphs",
+    "mechanical_gifs",
   ]
 
   return (
@@ -13,12 +16,17 @@ export const Banner: React.FC = () => {
       <h1>Motional</h1>
       <ul>
         {subRedditList.map((subreddit, index) => {
-          return(
-            <div>
-              <li key={index}>
-                <button>{`r/${subreddit}`}</button>
-              </li>
-            </div>
+          return (
+            <li key={index}>
+              <button
+                onClick={() => {
+                  dispatch(setBucket(subreddit))
+                }}
+                key={index}
+              >
+                {`r/${subreddit}`}
+              </button>
+            </li>
           )
         })}
       </ul>
