@@ -3,10 +3,6 @@ import { setBucket } from "./bucketSlice"
 import { useGetSubQuery } from "./aboutSlice"
 import "./bucket.css"
 
-const imgUrl =
-  "https://b.thumbs.redditmedia.com/d5Bwnh8a65c1BxNmvV2O2DpFq6NkrRX4PrFRNuDFpBA.png"
-const subsriberCount = 295400
-
 const formatSubCount = (subcount: number) => {
   if (subcount >= 1_000_000) {
     return (subcount / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m"
@@ -22,8 +18,12 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   const { data, isLoading, error } = useGetSubQuery(bucketName)
 
-  if (isLoading) { return <p>Loading...</p>};
-  if (error || !data) {return <p> Error</p>}
+  if (isLoading) {
+    return <p>Loading...</p>
+  }
+  if (error || !data) {
+    return <p> Error</p>
+  }
 
   return (
     <div
