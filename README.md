@@ -1,14 +1,14 @@
-# vite-template-redux
+# GifGallery
 
-Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
+An interactive gallery with educational and interesting gifs and videos
 
 
 ## Goals
 
-- Build a reddit api minimalist app using React - Redux / toolkiy
+- Build a reddit api minimalist app using React - Redux / toolkit
 - A beginner friendly application to test build patterns
 - Optimized performance compared to Create React App
-- Customizable without ejecting
+  
 
 ## Scripts
 
@@ -17,8 +17,17 @@ Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/) to create a mode
 - `preview` - locally preview production build
 - `test` - launch test runner
 
-## Inspiration
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+## Languages
+- Typescript
+- Javascript
+- CSS
+- HTML
+
+
+## Platforms and Frameworks
+- Backend server hosted on Render
+- Front-end handled through Netifly
+- State management handled on Redux JS library
+- Using rtk query to handle middleware and caching
+ 
