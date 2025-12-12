@@ -23,4 +23,4 @@ export const postsApiSlice = createApi({
   }),
 })
 
-export const { useGetPostsQuery } = postsApiSlice
+export const { useGetPostsQuery } = postsApiSlice;

@@ -10,3 +10,8 @@ export interface Media {
   width: number
   height: number
 }
+
+export interface SubReddit {
+  subCount: number
+  image: string
+}

@@ -1,0 +1,48 @@
+import { useAppDispatch } from "../../app/hooks"
+import { setBucket } from "./bucketSlice"
+import { useGetSubQuery } from "./aboutSlice"
+import "./bucket.css"
+
+const imgUrl =
+  "https://b.thumbs.redditmedia.com/d5Bwnh8a65c1BxNmvV2O2DpFq6NkrRX4PrFRNuDFpBA.png"
+const subsriberCount = 295400
+
+const formatSubCount = (subcount: number) => {
+  if (subcount >= 1_000_000) {
+    return (subcount / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m"
+  }
+  if (subcount >= 1000) {
+    return (subcount / 1000).toFixed(1).replace(/\.0$/, "") + "k"
+  }
+  return subcount.toString()
+}
+
+export const Bucket = ({ bucketName }: { bucketName: string }) => {
+  const dispatch = useAppDispatch()
+
+  const { data, isLoading, error } = useGetSubQuery(bucketName)
+
+  if (isLoading) { return <p>Loading...</p>};
+  if (error || !data) {return <p> Error</p>}
+
+  return (
+    <div
+      className="bucket"
+      id={bucketName}
+      onClick={() => dispatch(setBucket(bucketName))}
+    >
+      <div className="image-and-information">
+        <img
+          src={data?.image}
+          width="40rem"
+          height="40rem"
+          alt={`${bucketName} icon`}
+          className="icon-image"
+        />
+        <p className="subCount">{formatSubCount(data?.subCount ?? 0)} </p>
+      </div>
+      <h2 className="bucketTitle">{`r/${bucketName}`}</h2>
+      <h2 className="arrow">&gt;</h2>
+    </div>
+  )
+}

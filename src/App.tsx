@@ -10,12 +10,14 @@ return (
 }
 
 export const App = () => (
-  <div className="App">
-    <header className="App-header">
+  <div className="app">
+    <aside className="nav-banner">
       <Banner />
+    </aside>
+    <main className="posts-area">
       <ErrorBoundary FallbackComponent={fallback}>
         <Posts />
       </ErrorBoundary>
-    </header>
+    </main>
   </div>
 )

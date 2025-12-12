@@ -1,0 +1,43 @@
+.bucket {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0.8rem 1.5rem  1rem;
+    border-top: solid rgba(240, 173, 244, 0.907) .1rem;
+}
+
+.bucket:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.image-and-information {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-image{
+    border: 0.2rem solid rgb(226, 3, 246);
+    border-radius: 50%;
+}
+
+.subCount, .bucketTitle {
+    color: rgb(85, 45, 83);
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.subCount {
+    margin: 0.5rem;
+    font-size: 1.3rem;
+}
+.bucketTitle {
+    font-size: 1.7rem;
+}
+
+.arrow {
+    font-size: 2rem;
+    color: rgba(240, 173, 244, 0.907);
+}
