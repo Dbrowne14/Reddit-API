@@ -16,12 +16,20 @@
 
 .posts-area {
   column-count: 3;
-  padding: 2rem 2rem;
+  column-gap: 2rem; /* space between columns */
+  padding: 2rem;
+}
+
+.posts-area > * {
+  break-inside: avoid;             /* prevents splitting */
+  page-break-inside: avoid;        /* fallback */
+  -webkit-column-break-inside: avoid; /* Safari/Chrome */
+  margin-bottom: 2rem;             /* spacing between posts */
 }
 
 h1 {
   font-size: 4rem;
-font-family: "Bitcount Prop Double Ink", system-ui;
+  font-family: "Bitcount Prop Double Ink", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;

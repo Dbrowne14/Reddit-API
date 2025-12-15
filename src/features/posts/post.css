@@ -11,5 +11,24 @@
 }
 
 .title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin-right: 3rem;
+}
+
+.visualInfo {
+  width: 90%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upvote_score {
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 0.7rem;
+  margin: 0;
+  text-align: center;
+  border: 0.4rem solid rgb(243, 224, 246);
+  border-radius: 50%;
+  background-color: white
 }

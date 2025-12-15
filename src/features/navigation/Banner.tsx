@@ -8,7 +8,7 @@ export const Banner: React.FC = () => {
     "perfectloops",
     "Cinemagraphs",
     "mechanical_gifs",
-    //"gifsthatkeepongiving",
+    "gifsthatkeepongiving",
   ]
 
   return (
