@@ -1,12 +1,10 @@
 import "./App.css"
-import { Banner } from "./features/navigation/Banner"
+import { Banner } from "./features/navigation/NavBanner"
 import { Posts } from "./features/posts/Posts"
 import { ErrorBoundary } from "react-error-boundary"
 
-function fallback () {
-return (
-  (<p>Posts not loading!! - Code Break</p>)
-  )
+function fallback() {
+  return <p>Posts not loading!! - Code Break</p>
 }
 
 export const App = () => (
