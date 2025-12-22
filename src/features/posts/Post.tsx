@@ -47,14 +47,19 @@ const renderMedia = (media: Media | null) => {
 }
 
 export const Post = ({ data, id }: PostProps) => {
-  const upvoteRatio = data.upvote_ratio * 100;
-  const upvoteRatioColor = (number: number) => {
-    if(number > 69 && number < 80) {
-      return "orange"
+  const upvoteRatio = data.upvote_ratio * 100
+  const upvoteRatioColor = (
+    number: number,
+    color1: string,
+    color2: string,
+    color3: string,
+  ) => {
+    if (number > 69 && number < 80) {
+      return color1
     } else if (number > 79 && number < 90) {
-      return "darkgoldenrod"
+      return color2
     } else {
-      return "mediumseagreen"
+      return color3
     }
   }
   return (
@@ -62,8 +67,28 @@ export const Post = ({ data, id }: PostProps) => {
       {renderMedia(data.media)}
       <div className="visualInfo">
         <p className="title">{data.title}</p>
-        <p className="upvote_score" style={{color: upvoteRatioColor(upvoteRatio) }}>{upvoteRatio}</p>
+        <p
+          className="upvote_score"
+          style={{
+            color: upvoteRatioColor(
+              upvoteRatio,
+              "orange",
+              "darkgoldenrod",
+              "seagreen",
+            ),
+          backgroundColor: upvoteRatioColor(
+            upvoteRatio,
+            "peru",
+            "lightgoldenrodyellow",
+            "lightgreen"
+          )
+          }}
+        >
+          {upvoteRatio}
+        </p>
       </div>
     </div>
   )
 }
+
+//"orange", "darkgoldenrod", "mediumseagreen"

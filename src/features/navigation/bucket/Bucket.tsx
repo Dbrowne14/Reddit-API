@@ -2,6 +2,7 @@ import { useAppDispatch } from "../../../app/hooks"
 import { setBucket } from "./bucketSlice"
 import { useGetSubQuery } from "./subSlice"
 import "./bucket.css"
+import greyPersonIcon from '../../../assets/grey-person-icon.png'
 
 const formatSubCount = (subcount: number) => {
   if (subcount >= 1_000_000) {
@@ -39,7 +40,10 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           alt={`${bucketName} icon`}
           className="icon-image"
         />
-        <p className="subCount">{formatSubCount(data?.subCount ?? 0)} </p>
+        <div className="subBucket">
+          <img src={greyPersonIcon} className="personIcon"/>
+          <p className="subCount">{formatSubCount(data?.subCount ?? 0)} </p>
+        </div>
       </div>
       <h2 className="bucketTitle">{`r/${bucketName}`}</h2>
       <h2 className="arrow">&gt;</h2>
