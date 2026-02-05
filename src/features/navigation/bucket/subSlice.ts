@@ -6,7 +6,7 @@ import type { SubReddit } from "../../../types/types"
 
 export const subSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000", //"https://reddit-app-proxy-server.onrender.com",
+    baseUrl: "https://reddit-app-proxy-server.onrender.com",//"http://localhost:4000"
   }),
   reducerPath: "subApi",
   // Tag types are used for caching and invalidation.

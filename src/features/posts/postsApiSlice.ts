@@ -3,7 +3,7 @@ import type { SubredditPosts } from "./Posts"
 
 export const postsApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000" //"https://reddit-app-proxy-server.onrender.com"
+    baseUrl: "https://reddit-app-proxy-server.onrender.com"
   }),
   reducerPath: "postsApi",
   // Tag types are used for caching and invalidation.
