@@ -1,7 +1,6 @@
 import { useAppDispatch } from "../../../app/hooks"
 import { setBucket } from "./bucketSlice"
 import { useGetSubQuery } from "./subSlice"
-import "./bucket.css"
 import greyPersonIcon from "../../../assets/grey-person-icon.png"
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import type { SerializedError } from "@reduxjs/toolkit"
@@ -53,7 +52,7 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className="flex justify-between items-center hover:(cursor-pointer bg-white)"
+      className="flex justify-between items-center hover:cursor-pointer hover:bg-white"
       id={bucketName}
       onClick={() => dispatch(setBucket(bucketName))}
     >

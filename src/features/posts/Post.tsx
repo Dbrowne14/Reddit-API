@@ -1,7 +1,6 @@
 import { _ } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js"
 import { Post as PostType } from "../../types/types"
 import type { Media } from "../../types/types"
-import "./post.css"
 
 interface PostProps {
   data: PostType
@@ -15,35 +14,27 @@ const aspectRatioByHeight = (width: number, height: number) => {
 }
 
 const renderMedia = (media: Media | null) => {
-  if (!media) {
-    return null
-  }
+  if (!media) return null
 
-  const { width, height, type } = media
+  const { width, height, type, url } = media
 
-  if (type === "gif") {
-    return (
-      <img
-        src={media?.url}
-        height={aspectRatioByHeight(width, height)}
-        width={size}
-        loading="lazy"
-      />
-    )
-  }
-  if (type === "video") {
-    return (
-      <video
-        src={media?.url}
-        width={size}
-        height={aspectRatioByHeight(width, height)}
-        playsInline
-        muted
-        controls
-        preload="none"
-      />
-    )
-  }
+  // Calculate the height based on aspect ratio
+  const calculatedHeight = aspectRatioByHeight(width, height)
+
+  // Wrapper div for styling
+  return (
+    <div className="overflow-hidden w-full max-w-full hover:scale-105 transition-transform duration-200 rounded-4xl">
+      {type === "gif" && (
+        <img
+          src={url}
+          width={size}
+          height={calculatedHeight}
+          loading="lazy"
+          className="w-full h-auto object-cover"
+        />
+      )}
+    </div>
+  )
 }
 
 export const Post = ({ data, id }: PostProps) => {
@@ -63,32 +54,32 @@ export const Post = ({ data, id }: PostProps) => {
     }
   }
   return (
-    <div className="visualBundle" id={String(id)}>
+    <div className="rounded-2xl" id={String(id)}>
       {renderMedia(data.media)}
-      <div className="visualInfo">
-        <p className="title">{data.title}</p>
-        <p
-          className="upvote_score"
-          style={{
-            color: upvoteRatioColor(
-              upvoteRatio,
-              "orange",
-              "darkgoldenrod",
-              "seagreen",
-            ),
-          backgroundColor: upvoteRatioColor(
-            upvoteRatio,
-            "peru",
-            "lightgoldenrodyellow",
-            "lightgreen"
-          )
-          }}
-        >
-          {upvoteRatio}
-        </p>
+      <div className="w-[90%] inline-flex items-center justify-between">
+        <p>{data.title}</p>
+        <div className="flex items-center justify-center rounded-full w-12 h-12"> 
+          <p
+            className="text-[1.4rem] font-bold p-2 rounded-full w-full"
+            style={{
+              color: upvoteRatioColor(
+                upvoteRatio,
+                "orange",
+                "darkgoldenrod",
+                "seagreen",
+              ),
+              backgroundColor: upvoteRatioColor(
+                upvoteRatio,
+                "peru",
+                "lightgoldenrodyellow",
+                "lightgreen",
+              ),
+            }}
+          >
+            {upvoteRatio}
+          </p>
+        </div>
       </div>
     </div>
   )
 }
-
-//"orange", "darkgoldenrod", "mediumseagreen"
