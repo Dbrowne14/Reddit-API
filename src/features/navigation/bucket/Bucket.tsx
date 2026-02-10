@@ -53,25 +53,26 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className="bucket"
+      className="flex justify-between items-center hover:(cursor-pointer bg-white)"
       id={bucketName}
       onClick={() => dispatch(setBucket(bucketName))}
     >
-      <div className="image-and-information">
+      <div className="flex flex-col items-center">
         <img
           src={data?.image}
           width="40rem"
           height="40rem"
           alt={`${bucketName} icon`}
-          className="icon-image"
+          className="rounded-full"
         />
-        <div className="subBucket">
-          <img src={greyPersonIcon} className="personIcon" />
-          <p className="subCount">{formatSubCount(data?.subCount ?? 0)} </p>
+        <div className="inline-flex items-center justify-center">
+          <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" /> 
+          <p className="m-[0.5rem_0.3rem] text-[1.3rem]">{formatSubCount(data?.subCount ?? 0)} </p>
         </div>
       </div>
-      <h2 className="bucketTitle">{`r/${bucketName}`}</h2>
-      <h2 className="arrow">&gt;</h2>
+      <h2 className="text-[1.7rem]">{`r/${bucketName}`}</h2>
+      <h2 className="text-[2rem] text-[rgba(240,173,244,0.907)]">&gt;</h2>
     </div>
   )
 }
+
