@@ -1,5 +1,4 @@
 import { Bucket } from "./bucket/Bucket"
-import { NightMode } from "./extraFeatures/NightMode"
 
 export const Banner: React.FC = () => {
   const subRedditList = [
@@ -17,10 +16,6 @@ export const Banner: React.FC = () => {
         {subRedditList.map((subreddit, index) => {
           return <Bucket key={index} bucketName={subreddit} />
         })}
-      </div>
-      <div className="extraFeatures">
-        <h1>New Features</h1>
-        <NightMode/>
       </div>
     </div>
   )
