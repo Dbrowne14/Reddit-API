@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import type { SubredditPosts } from "./Posts"
+import { API_BASE_Local, Render_Base } from "../../utils/hostingPreferences"
+
 
 export const postsApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://reddit-app-proxy-server.onrender.com"
+    baseUrl: API_BASE_Local,
   }),
   reducerPath: "postsApi",
   // Tag types are used for caching and invalidation.
@@ -23,4 +25,4 @@ export const postsApiSlice = createApi({
   }),
 })
 
-export const { useGetPostsQuery } = postsApiSlice;
+export const { useGetPostsQuery } = postsApiSlice

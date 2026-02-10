@@ -2,7 +2,9 @@ import { useAppDispatch } from "../../../app/hooks"
 import { setBucket } from "./bucketSlice"
 import { useGetSubQuery } from "./subSlice"
 import "./bucket.css"
-import greyPersonIcon from '../../../assets/grey-person-icon.png'
+import greyPersonIcon from "../../../assets/grey-person-icon.png"
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
+import type { SerializedError } from "@reduxjs/toolkit"
 
 const formatSubCount = (subcount: number) => {
   if (subcount >= 1_000_000) {
@@ -16,14 +18,37 @@ const formatSubCount = (subcount: number) => {
 
 export const Bucket = ({ bucketName }: { bucketName: string }) => {
   const dispatch = useAppDispatch()
+  console.log(bucketName)
 
   const { data, isLoading, error } = useGetSubQuery(bucketName)
+
+  console.log(data)
 
   if (isLoading) {
     return <p>Loading...</p>
   }
-  if (error || !data) {
-    return <p> Error</p>
+  if (error) {
+    console.log("RTK Query Error:", error)
+    let message = "Something went wrong"
+
+    if ("status" in error) {
+      const fetchError = error as FetchBaseQueryError
+
+      if (typeof fetchError.data === "string") {
+        message = fetchError.data
+      } else if (
+        typeof fetchError.data === "object" &&
+        fetchError.data !== null &&
+        "message" in fetchError.data
+      ) {
+        message = (fetchError.data as { message: string }).message
+      }
+    } else {
+      const serialized = error as SerializedError
+      message = serialized.message ?? message
+    }
+
+    return <p>{message}</p>
   }
 
   return (
@@ -41,7 +66,7 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           className="icon-image"
         />
         <div className="subBucket">
-          <img src={greyPersonIcon} className="personIcon"/>
+          <img src={greyPersonIcon} className="personIcon" />
           <p className="subCount">{formatSubCount(data?.subCount ?? 0)} </p>
         </div>
       </div>

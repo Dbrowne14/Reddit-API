@@ -5,7 +5,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-    selectedBucket: 'educationalgifs'
+    selectedBucket: 'PixelArt'
 }
 
 export const bucketSlice = createSlice({

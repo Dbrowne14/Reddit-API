@@ -8,7 +8,7 @@ import { subSlice } from "../features/navigation/bucket/subSlice"
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
 
-const rootReducer = combineSlices(postsApiSlice, bucketSlice, subSlice) //replace with my slices
+const rootReducer = combineSlices(postsApiSlice, bucketSlice, subSlice) 
 // Infer the `RootState` type from the root reducer
 export type RootState = ReturnType<typeof rootReducer>
 
