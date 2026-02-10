@@ -2,6 +2,7 @@
 
 @theme {
   --font-leagueSpartan: "League Spartan", sans-serif;
+  --font-bitCount: "Bitcount Prop Double Ink", system-ui;
 }
 
 @layer base {
@@ -10,7 +11,7 @@
   }
 
   body {
-    @apply m-0 text-3xl ;
+    @apply m-0 text-3xl;
     font-family: var(--font-leagueSpartan);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -19,5 +20,21 @@
   code {
     font-family:
       source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  h1 {
+    @apply text-[4rem] font-normal;
+    font-family: var(--font-bitCount);
+    font-variation-settings:
+      "slnt" 0,
+      "CRSV" 0.5,
+      "ELSH" 0,
+      "ELXP" 0,
+      "SZP1" 0,
+      "SZP2" 0,
+      "XPN1" 0,
+      "XPN2" 0,
+      "YPN1" 0,
+      "YPN2" 0;
   }
 }
