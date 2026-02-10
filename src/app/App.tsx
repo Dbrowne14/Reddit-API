@@ -1,4 +1,4 @@
-import "./App.css"
+
 import { Banner } from "../features/navigation/NavBanner"
 import { Posts } from "../features/posts/Posts"
 import { ErrorBoundary } from "react-error-boundary"

@@ -1,7 +1,5 @@
 import { Bucket } from "./bucket/Bucket"
 import { NightMode } from "./extraFeatures/NightMode"
-import { Filter } from "./extraFeatures/Filter"
-import "./navBanner.css"
 
 export const Banner: React.FC = () => {
   const subRedditList = [
@@ -22,7 +20,6 @@ export const Banner: React.FC = () => {
       </div>
       <div className="extraFeatures">
         <h1>New Features</h1>
-        <Filter />
         <NightMode/>
       </div>
     </div>
