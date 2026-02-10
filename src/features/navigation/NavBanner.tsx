@@ -6,10 +6,10 @@ import "./navBanner.css"
 export const Banner: React.FC = () => {
   const subRedditList = [
     "PixelArt",
-    "perfectloops",
-    "Cinemagraphs",
-    "mechanical_gifs",
-    "gifsthatkeepongiving",
+    "ImaginaryLandscapes",
+    "ImaginaryArchitecture",
+    "EarthPorn",
+    "CityPorn",
   ]
 
   return (
