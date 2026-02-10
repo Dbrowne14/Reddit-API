@@ -54,9 +54,9 @@ export const Post = ({ data, id }: PostProps) => {
     }
   }
   return (
-    <div className="rounded-2xl" id={String(id)}>
+    <div className="rounded-2xl flex flex-col" id={String(id)}>
       {renderMedia(data.media)}
-      <div className="w-[90%] inline-flex items-center justify-between">
+      <div className="w-[90%] items-center justify-between hidden sm:inline-flex">
         <p>{data.title}</p>
         <div className="flex items-center justify-center rounded-full w-12 h-12"> 
           <p

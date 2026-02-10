@@ -4,6 +4,8 @@ import { useGetSubQuery } from "./subSlice"
 import greyPersonIcon from "../../../assets/grey-person-icon.png"
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import type { SerializedError } from "@reduxjs/toolkit"
+import { useAppSelector } from "../../../app/hooks"
+import RedditLogo from "../../../assets/reddit-seeklogo.svg"
 
 const formatSubCount = (subcount: number) => {
   if (subcount >= 1_000_000) {
@@ -15,13 +17,19 @@ const formatSubCount = (subcount: number) => {
   return subcount.toString()
 }
 
+const checkImg = (img: string | undefined) => {
+  if(!img) {
+    return RedditLogo
+  }
+
+  return img
+
+}
+
 export const Bucket = ({ bucketName }: { bucketName: string }) => {
   const dispatch = useAppDispatch()
-  console.log(bucketName)
 
   const { data, isLoading, error } = useGetSubQuery(bucketName)
-
-  console.log(data)
 
   if (isLoading) {
     return <p>Loading...</p>
@@ -52,26 +60,27 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className="flex justify-between items-center hover:cursor-pointer hover:bg-white"
+      className="flex sm:justify-between justify-center items-center hover:cursor-pointer hover:bg-white w-full"
       id={bucketName}
       onClick={() => dispatch(setBucket(bucketName))}
     >
       <div className="flex flex-col items-center">
         <img
-          src={data?.image}
+          src={checkImg(data?.image)}
           width="40rem"
           height="40rem"
           alt={`${bucketName} icon`}
           className="rounded-full"
         />
-        <div className="inline-flex items-center justify-center">
+        <div className="items-center justify-center hidden sm:inline-flex">
           <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" /> 
           <p className="m-[0.5rem_0.3rem] text-[1.3rem]">{formatSubCount(data?.subCount ?? 0)} </p>
         </div>
       </div>
-      <h2 className="text-[1.7rem]">{`r/${bucketName}`}</h2>
-      <h2 className="text-[2rem] text-[rgba(240,173,244,0.907)]">&gt;</h2>
+      <h2 className="text-[1.7rem] hidden sm:block">{`r/${bucketName}`}</h2>
     </div>
   )
 }
+
+// <h2 className="text-[2rem] text-[rgba(240,173,244,0.907)]">&gt;</h2>
 

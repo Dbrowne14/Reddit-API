@@ -3,7 +3,7 @@
 @theme {
   --font-leagueSpartan: "League Spartan", sans-serif;
   --font-bitCount: "Bitcount Prop Double Ink", system-ui;
-  --bg-custom: rgb(243,224,246);
+  --bg-custom: rgb(18,18,30);
 }
 
 @layer base {
@@ -12,16 +12,12 @@
   }
 
   body {
-    @apply m-0 text-3xl;
-    font-family: var(--font-leagueSpartan);
+    @apply m-0 text-3xl text-white;
+    font-family: var(--font-bit);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  code {
-    font-family:
-      source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-  }
 
   h1 {
     @apply text-[4rem] font-normal;
@@ -42,15 +38,7 @@
 
 @layer utilities {
     /*app features*/
-  .app {
-    @apply text-center grid grid-cols-[1fr_10fr];
-  }
 
-  .posts-area {
-    column-count: 3;
-    column-gap: 2rem; /* space between columns */
-    padding: 2rem;
-  }
 
   .posts-area > * {
     break-inside: avoid; /* prevents splitting */
@@ -66,12 +54,10 @@
   }
 
   .banner {
-    @apply w-full p-[2,0,0,0] m-[2,1] bg-(--bg-custom) border border-white rounded-2xl;
+    @apply w-full p-[2,0,0,0] m-[2,1] border border-white rounded-2xl;
   }
 
-  .nav {
-    @apply sticky top-0;
-  }
+
    /*nav features*/
 
 }
