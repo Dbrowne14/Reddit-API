@@ -1,3 +1,4 @@
+import { useScrollStatus } from "../../hooks/customHooks"
 import { Bucket } from "./bucket/Bucket"
 
 export const Banner: React.FC = () => {
@@ -5,18 +6,17 @@ export const Banner: React.FC = () => {
     "PixelArt",
     "ImaginaryLandscapes",
     "EarthPorn",
-       "ImaginaryArchitecture",
+    "ImaginaryArchitecture",
     "CityPorn",
   ]
 
+  const hidden = useScrollStatus(50)
 
   return (
     <div className="w-full">
       <div className="w-full pt-1  bg-(--bg-nav) border-b-12 border-b-(--bg-custom)  sm:border-none sm:rounded-2xl sm:px-4">
-        <h1 className="text-[2rem]">
-          r/GifGallery
-        </h1>
-        <div className="w-full flex flex-row sm:flex-col pt-2">
+        <h1 className={`text-[2rem] transition-[max-height,margin,padding] duration-300 ease-in-out ${hidden ? "max-h-0 m-0 p-0 opacity-0" : "max-h-40 p-2 opacity-100"}`}>r/GifGallery</h1>
+        <div className="w-full flex flex-row sm:flex-col pt-4">
           {subRedditList.map((subreddit, index) => {
             return <Bucket key={index} bucketName={subreddit} />
           })}
