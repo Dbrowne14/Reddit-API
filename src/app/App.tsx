@@ -9,7 +9,7 @@ function fallback() {
 
 export const App = () => (
   <div className="text-center flex flex-col sm:flex-row">
-    <aside className="sticky top-0 w-full sm:w-1/5">
+    <aside className="sticky top-0 w-full sm:w-1/5 z-20">
       <Banner />
     </aside>
     <main className="flex-1 columns-2 sm:columns-3 gap-8 p-4 posts-area">

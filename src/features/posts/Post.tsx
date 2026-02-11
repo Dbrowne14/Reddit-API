@@ -1,43 +1,32 @@
 import { _ } from "vitest/dist/chunks/reporters.d.BFLkQcL6.js"
 import { Post as PostType } from "../../types/types"
-import type { Media } from "../../types/types"
+import { renderMedia } from "../../utils/utilityFns"
+import { useEffect, useState, useRef } from "react"
 
 interface PostProps {
   data: PostType
   id: number
 }
 
-const size = 400
-
-const aspectRatioByHeight = (width: number, height: number) => {
-  return size * (height / width)
-}
-
-const renderMedia = (media: Media | null) => {
-  if (!media) return null
-
-  const { width, height, type, url } = media
-
-  // Calculate the height based on aspect ratio
-  const calculatedHeight = aspectRatioByHeight(width, height)
-
-  // Wrapper div for styling
-  return (
-    <div className="overflow-hidden w-full max-w-full hover:scale-105 transition-transform duration-200 rounded-4xl">
-      {type === "gif" && (
-        <img
-          src={url}
-          width={size}
-          height={calculatedHeight}
-          loading="lazy"
-          className="w-full h-auto object-cover"
-        />
-      )}
-    </div>
-  )
-}
-
 export const Post = ({ data, id }: PostProps) => {
+  const [clicked, setClicked] = useState(false)
+  const postRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (postRef.current && !postRef.current.contains(event.target as Node)) {
+        setClicked(false)
+      }
+    }
+
+    if (clicked) document.addEventListener("mousedown", handleClickOutside)
+    else document.removeEventListener("mousedown", handleClickOutside)
+
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [clicked])
+
+  const toggleExpand = () => setClicked(!clicked)
+
   const upvoteRatio = data.upvote_ratio * 100
   const upvoteRatioColor = (
     number: number,
@@ -54,13 +43,24 @@ export const Post = ({ data, id }: PostProps) => {
     }
   }
   return (
-    <div className="rounded-2xl block break-inside-avoid" id={String(id)}>
+    <div
+      className={`
+        rounded-2xl break-inside-avoid relative cursor-pointer 
+        transition-all duration-300 ease-in-out 
+        ${clicked ? "scale-110 z-10" : "block"}
+      `}
+      id={String(id)}
+      ref={postRef}
+      onClick={toggleExpand}
+    >
       {renderMedia(data.media)}
-      <div className="w-[90%] items-center justify-between hidden sm:inline-flex">
-        <p>{data.title}</p>
-        <div className="flex items-center justify-center rounded-full w-12 h-12"> 
+      <div
+        className={`absolute bottom-0 left-0 rounded-br-2xl rounded-bl-2xl w-full p-3 items-center justify-between inline-flex bg-[rgba(1,1,1,0.6)] ${clicked ? "opacity-100 shadow-2xl" : "opacity-0"} `}
+      >
+        <p className="text-reSizing">{data.title}</p>
+        <div className="flex items-center justify-center rounded-full w-12 h-12">
           <p
-            className="text-[1.4rem] font-bold p-2 rounded-full w-full"
+            className="text-reSizing font-bold p-2 rounded-full w-full"
             style={{
               color: upvoteRatioColor(
                 upvoteRatio,

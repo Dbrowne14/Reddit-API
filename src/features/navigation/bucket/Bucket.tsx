@@ -5,29 +5,19 @@ import greyPersonIcon from "../../../assets/grey-person-icon.png"
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import type { SerializedError } from "@reduxjs/toolkit"
 import RedditLogo from "../../../assets/reddit-seeklogo.svg"
-
-const formatSubCount = (subcount: number) => {
-  if (subcount >= 1_000_000) {
-    return (subcount / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m"
-  }
-  if (subcount >= 1000) {
-    return (subcount / 1000).toFixed(1).replace(/\.0$/, "") + "k"
-  }
-  return subcount.toString()
-}
+import { formatSubCount } from "../../../utils/utilityFns"
+import { useAppSelector } from "../../../app/hooks"
 
 const checkImg = (img: string | undefined) => {
-  if(!img) {
+  if (!img) {
     return RedditLogo
   }
-
   return img
-
 }
 
 export const Bucket = ({ bucketName }: { bucketName: string }) => {
   const dispatch = useAppDispatch()
-
+  const selectedBucket = useAppSelector(state => state.bucket.selectedBucket)
   const { data, isLoading, error } = useGetSubQuery(bucketName)
 
   if (isLoading) {
@@ -59,7 +49,9 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className="flex sm:justify-between justify-center items-center hover:cursor-pointer hover:bg-white w-full"
+      className={` flex flex-col sm:flex-row sm:justify-between justify-center w-full p-2 rounded-tr-2xl rounded-tl-2xl items-center transition-colors duration-300 hover:cursor-pointer hover:bg-custom  ${
+          selectedBucket === bucketName ? "bg-(--bg-custom) border-[1.5px] border-b-4 border-b-(--bg-custom)" : "bg-(--bg-nav) border-b-[1.5px] border-b-white"
+        }`}
       id={bucketName}
       onClick={() => dispatch(setBucket(bucketName))}
     >
@@ -71,15 +63,23 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           alt={`${bucketName} icon`}
           className="rounded-full"
         />
-        <div className="items-center justify-center hidden sm:inline-flex">
-          <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" /> 
-          <p className="m-[0.5rem_0.3rem] text-[1.3rem]">{formatSubCount(data?.subCount ?? 0)} </p>
+        <div className={`items-center justify-center inline-flex text-reSizing sm:block transition-opacity duration-300 ${
+          selectedBucket === bucketName ? "opacity-100" : "opacity-0"
+        }`}>
+          <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" />
+          <p className="m-[0.5rem_0.3rem] text-[clamp(0.9rem, 2vw, 1.4rem)]">
+            {formatSubCount(data?.subCount ?? 0)}{" "}
+          </p>
         </div>
       </div>
-      <h2 className="text-[1.7rem] hidden sm:block">{`r/${bucketName}`}</h2>
+      <h2
+        className={`text-reSizing sm:block transition-opacity duration-300 ${
+          selectedBucket === bucketName ? "opacity-100" : "opacity-0"
+        }`}
+      >{`r/${bucketName}`}</h2>
     </div>
+ 
   )
 }
 
 // <h2 className="text-[2rem] text-[rgba(240,173,244,0.907)]">&gt;</h2>
-
