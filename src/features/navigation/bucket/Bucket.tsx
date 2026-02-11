@@ -4,7 +4,6 @@ import { useGetSubQuery } from "./subSlice"
 import greyPersonIcon from "../../../assets/grey-person-icon.png"
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import type { SerializedError } from "@reduxjs/toolkit"
-import { useAppSelector } from "../../../app/hooks"
 import RedditLogo from "../../../assets/reddit-seeklogo.svg"
 
 const formatSubCount = (subcount: number) => {
