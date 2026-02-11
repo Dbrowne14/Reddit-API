@@ -50,10 +50,15 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
   return (
     <div
       className={` flex flex-col sm:flex-row sm:justify-between justify-center w-full p-2 rounded-tr-2xl rounded-tl-2xl items-center transition-colors duration-300 hover:cursor-pointer hover:bg-custom  ${
-          selectedBucket === bucketName ? "bg-(--bg-custom) border-[1.5px] border-b-4 border-b-(--bg-custom)" : "bg-(--bg-nav) border-b-[1.5px] border-b-white"
-        }`}
+        selectedBucket === bucketName
+          ? "bg-(--bg-custom) border-[1.5px] border-b-4 border-b-(--bg-custom)"
+          : "bg-(--bg-nav) border-b-[1.5px] border-b-white"
+      }`}
       id={bucketName}
-      onClick={() => dispatch(setBucket(bucketName))}
+      onClick={() => {
+        dispatch(setBucket(bucketName))
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+      }}
     >
       <div className="flex flex-col items-center">
         <img
@@ -63,9 +68,11 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           alt={`${bucketName} icon`}
           className="rounded-full"
         />
-        <div className={`items-center justify-center inline-flex text-reSizing sm:block transition-opacity duration-300 ${
-          selectedBucket === bucketName ? "opacity-100" : "opacity-0"
-        }`}>
+        <div
+          className={`items-center justify-center inline-flex text-reSizing sm:block transition-opacity duration-300 ${
+            selectedBucket === bucketName ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" />
           <p className="m-[0.5rem_0.3rem] text-[clamp(0.9rem, 2vw, 1.4rem)]">
             {formatSubCount(data?.subCount ?? 0)}{" "}
@@ -78,7 +85,6 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
         }`}
       >{`r/${bucketName}`}</h2>
     </div>
- 
   )
 }
 
