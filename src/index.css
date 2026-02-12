@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+/*---break---*/
+
 
 @theme {
   --font-leagueSpartan: "League Spartan", sans-serif;
@@ -6,6 +10,7 @@
   --color-bgCustom: rgb(18, 18, 30);
   --color-bgNav: rgba(28, 26, 48, 1);
   --text-reSizing: clamp(0.9rem, 2vw, 1.6rem);
+  --color-divider: rgba(77,57,93,1);
 }
 
 :root {
@@ -23,7 +28,7 @@
   }
 
   body {
-    @apply m-0 text-3xl text-white;
+    @apply m-0;
     font-family: var(--font-bit);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -42,6 +47,9 @@
       "XPN2" 0,
       "YPN1" 0,
       "YPN2" 0;
+  }
+  * {
+    @apply border-border outline-ring/50;
   }
 }
 
@@ -78,5 +86,32 @@
     @apply rounded-2xl
   }
 }
+.explainersStyles {
+  @apply text-divider;
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+}
   /*nav features*/
+}
+
+/*---break---*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: white;
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/*---break---*/
+
+/*---break---*/
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
