@@ -49,10 +49,10 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className={` flex flex-col md:flex-row md:justify-between justify-center w-full p-2 rounded-tr-2xl rounded-tl-2xl items-center transition-colors duration-300 hover:cursor-pointer hover:bg-bgCustom  ${
+      className={`flex flex-col md:flex-row md:justify-between justify-center w-full p-2 double-top-rounded items-center transition-colors duration-300 hover:cursor-pointer hover:bg-bgCustom  ${
         selectedBucket === bucketName
-          ? "bg-bgCustom border-[1.5px] border-b-4 border-b-bgCustom"
-          : "bg-bgNav border-b-[1.5px] border-b-white"
+          ? "bg-bgCustom border-[1.5px] border-(--color-bucketCustom) border-b-4 border-b-bgCustom"
+          : "bg-bgNav border-b-[1.5px] border-b-(--color-bucketCustom)"
       }`}
       id={bucketName}
       onClick={() => {

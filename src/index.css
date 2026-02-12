@@ -3,10 +3,18 @@
 @theme {
   --font-leagueSpartan: "League Spartan", sans-serif;
   --font-bitCount: "Bitcount Prop Double Ink", system-ui;
-  --color-bgCustom: rgb(18,18,30);
+  --color-bgCustom: rgb(18, 18, 30);
   --color-bgNav: rgba(28, 26, 48, 1);
-  
-  --text-reSizing: clamp(0.9rem,2vw,1.4rem);
+  --text-reSizing: clamp(0.9rem, 2vw, 1.4rem);
+}
+
+:root {
+  --color-bucketCustom: rgba(255, 255, 255, 1);
+}
+@media (min-width: 768px) {
+  :root {
+    --color-bucketCustom: rgba(255, 255, 255, 0);
+  }
 }
 
 @layer base {
@@ -20,7 +28,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
 
   h1 {
     font-family: var(--font-bitCount);
@@ -39,8 +46,7 @@
 }
 
 @layer utilities {
-    /*app features*/
-
+  /*app features*/
 
   .posts-area > * {
     break-inside: avoid; /* prevents splitting */
@@ -48,7 +54,6 @@
     -webkit-column-break-inside: avoid; /* Safari/Chrome */
     margin-bottom: 2rem; /* spacing between posts */
   }
-  /*app features*/
 
   /*nav features*/
   .selection-button {
@@ -57,10 +62,17 @@
 
   .banner {
     @apply w-full p-[2,0,0,0] m-[2,1] border border-white rounded-2xl;
-    color: rgba(38, 6, 58, 0.27)
+    color: rgba(38, 6, 58, 0.27);
   }
 
+  .double-top-rounded {
+    @apply rounded-tr-2xl rounded-tl-2xl 
+  }
 
-   /*nav features*/
-
+  @media (min-width: 768px) {
+ .double-top-rounded {
+    @apply rounded-2xl
+  }
+}
+  /*nav features*/
 }
