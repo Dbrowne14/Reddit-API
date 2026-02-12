@@ -49,18 +49,18 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className={`flex flex-col md:flex-row md:justify-between justify-center w-full p-2 double-top-rounded items-center transition-colors duration-300 hover:cursor-pointer hover:bg-bgCustom  ${
+      className={`flex flex-col md:flex-row md:justify-start md:gap-6 justify-center w-full p-2 double-top-rounded items-center transition-colors duration-300 hover:cursor-pointer hover:bg-bgCustom  ${
         selectedBucket === bucketName
           ? "bg-bgCustom border-[1.5px] border-(--color-bucketCustom) border-b-4 border-b-bgCustom"
           : "bg-bgNav border-b-[1.5px] border-b-(--color-bucketCustom)"
-      }`}
+      } md:border-none`}
       id={bucketName}
       onClick={() => {
         dispatch(setBucket(bucketName))
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
       }}
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col md:w-25 md:gap-4 md:border-r-[0.4px] md:border-r-[rgba(77,57,93,0.5)] md:pr-3 items-center">
         <img
           src={checkImg(data?.image)}
           width="40rem"
@@ -69,9 +69,9 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           className="rounded-full"
         />
         <div
-          className={`items-center justify-center inline-flex text-reSizing md:block transition-opacity duration-300 ${
+          className={`inline-flex items-center justify-center text-reSizing transition-opacity duration-300 ${
             selectedBucket === bucketName ? "opacity-100" : "opacity-0"
-          }`}
+          } md:opacity-100 `}
         >
           <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" />
           <p className="m-[0.5rem_0.3rem] text-[clamp(0.9rem, 2vw, 1.4rem)]">
@@ -82,10 +82,8 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
       <h2
         className={`text-reSizing md:block transition-opacity duration-300 ${
           selectedBucket === bucketName ? "opacity-100" : "opacity-0"
-        }`}
+        } md:opacity-100`}
       >{`r/${bucketName}`}</h2>
     </div>
   )
 }
-
-// <h2 className="text-[2rem] text-[rgba(240,173,244,0.907)]">&gt;</h2>

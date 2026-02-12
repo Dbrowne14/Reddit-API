@@ -55,7 +55,7 @@ export const Post = ({ data, id }: PostProps) => {
     >
       {renderMedia(data.media)}
       <div
-        className={`absolute bottom-0 left-0 rounded-br-2xl rounded-bl-2xl w-full p-3 items-center justify-between inline-flex bg-[rgba(1,1,1,0.6)] ${clicked ? "opacity-100 shadow-2xl" : "opacity-0"} `}
+        className={`absolute bottom-0 left-0 double-bottom-rounded w-full p-3 2xl:p-6 items-center justify-between inline-flex bg-[rgba(1,1,1,0.8)] ${clicked ? "opacity-100 shadow-2xl" : "opacity-0"} `}
       >
         <p className="text-reSizing">{data.title}</p>
         <div className="flex items-center justify-center rounded-full w-12 h-12">
