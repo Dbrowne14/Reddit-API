@@ -3,14 +3,15 @@
 @theme {
   --font-leagueSpartan: "League Spartan", sans-serif;
   --font-bitCount: "Bitcount Prop Double Ink", system-ui;
-  --bg-custom: rgb(18,18,30);
-  --bg-nav: rgba(28, 26, 48, 1);
+  --color-bgCustom: rgb(18,18,30);
+  --color-bgNav: rgba(28, 26, 48, 1);
+  
   --text-reSizing: clamp(0.9rem,2vw,1.4rem);
 }
 
 @layer base {
   html {
-    @apply text-[62.5%] bg-(--bg-custom);
+    @apply text-[62.5%] bg-bgCustom;
   }
 
   body {
@@ -22,7 +23,6 @@
 
 
   h1 {
-    @apply text-[4rem] font-normal;
     font-family: var(--font-bitCount);
     font-variation-settings:
       "slnt" 0,

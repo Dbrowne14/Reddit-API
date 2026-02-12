@@ -49,10 +49,10 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className={` flex flex-col sm:flex-row sm:justify-between justify-center w-full p-2 rounded-tr-2xl rounded-tl-2xl items-center transition-colors duration-300 hover:cursor-pointer hover:bg-custom  ${
+      className={` flex flex-col md:flex-row md:justify-between justify-center w-full p-2 rounded-tr-2xl rounded-tl-2xl items-center transition-colors duration-300 hover:cursor-pointer hover:bg-bgCustom  ${
         selectedBucket === bucketName
-          ? "bg-(--bg-custom) border-[1.5px] border-b-4 border-b-(--bg-custom)"
-          : "bg-(--bg-nav) border-b-[1.5px] border-b-white"
+          ? "bg-bgCustom border-[1.5px] border-b-4 border-b-bgCustom"
+          : "bg-bgNav border-b-[1.5px] border-b-white"
       }`}
       id={bucketName}
       onClick={() => {
@@ -69,7 +69,7 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           className="rounded-full"
         />
         <div
-          className={`items-center justify-center inline-flex text-reSizing sm:block transition-opacity duration-300 ${
+          className={`items-center justify-center inline-flex text-reSizing md:block transition-opacity duration-300 ${
             selectedBucket === bucketName ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -80,7 +80,7 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
         </div>
       </div>
       <h2
-        className={`text-reSizing sm:block transition-opacity duration-300 ${
+        className={`text-reSizing md:block transition-opacity duration-300 ${
           selectedBucket === bucketName ? "opacity-100" : "opacity-0"
         }`}
       >{`r/${bucketName}`}</h2>
