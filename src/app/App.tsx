@@ -12,7 +12,7 @@ export const App = () => (
     <aside className="sticky top-0 md:h-full md:w-fit z-20">
       <Banner />
     </aside>
-    <main className="flex-1 columns-2 md:columns-3 2xl:columns-4 gap-8 p-4 posts-area">
+    <main className="flex-1 columns-2 xl:columns-3 2xl:columns-4 gap-8 p-4 posts-area">
       <ErrorBoundary FallbackComponent={fallback}>
         <Posts />
       </ErrorBoundary>

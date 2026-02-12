@@ -4,7 +4,7 @@ import { useGetSubQuery } from "./subSlice"
 import greyPersonIcon from "../../../assets/grey-person-icon.png"
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import type { SerializedError } from "@reduxjs/toolkit"
-import RedditLogo from "../../../assets/reddit-seeklogo.svg"
+import RedditLogo from "../../../assets/RedCanvasFavicon.png"
 import { formatSubCount } from "../../../utils/utilityFns"
 import { useAppSelector } from "../../../app/hooks"
 
@@ -49,7 +49,7 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
 
   return (
     <div
-      className={`flex flex-col md:flex-row md:justify-start md:gap-6 justify-center w-full p-2 double-top-rounded items-center transition-colors duration-300 hover:cursor-pointer hover:bg-bgCustom  ${
+      className={`flex flex-col md:flex-row md:justify-start md:gap-6 justify-center w-full p-2 double-top-rounded items-center transition-(colors) hover:cursor-pointer hover:bg-bgCustom  ${
         selectedBucket === bucketName
           ? "bg-bgCustom border-[1.5px] border-(--color-bucketCustom) border-b-4 border-b-bgCustom"
           : "bg-bgNav border-b-[1.5px] border-b-(--color-bucketCustom)"
@@ -69,9 +69,8 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
           className="rounded-full"
         />
         <div
-          className={`inline-flex items-center justify-center text-reSizing transition-opacity duration-300 ${
-            selectedBucket === bucketName ? "opacity-100" : "opacity-0"
-          } md:opacity-100 `}
+          className={`inline-flex items-center justify-center text-reSizing transition-opacity duration-300 
+             `}
         >
           <img src={greyPersonIcon} className="h-[0.8rem] w-[0.8rem]" />
           <p className="m-[0.5rem_0.3rem] text-[clamp(0.9rem, 2vw, 1.4rem)]">
@@ -80,9 +79,7 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
         </div>
       </div>
       <h2
-        className={`text-reSizing md:block transition-opacity duration-300 ${
-          selectedBucket === bucketName ? "opacity-100" : "opacity-0"
-        } md:opacity-100`}
+        className={`text-reSizing md:block transition-opacity duration-300`}
       >{`r/${bucketName}`}</h2>
     </div>
   )
