@@ -21,7 +21,6 @@ The frontend:
 
 - Fetches data through a custom proxy server
 - Uses RTK Query for caching and API state management
-- Implements client-side routing for smooth navigation
 - Displays subreddit media in a responsive gallery layout
 - Optimizes loading behavior for improved user experience
 
