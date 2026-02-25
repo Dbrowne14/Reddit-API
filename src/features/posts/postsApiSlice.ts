@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import type { SubredditPosts } from "./Posts"
-import { API_BASE_Local } from "../../utils/hostingPreferences" //for alt API_BASE_Local or Render_Base
+import { Render_Base } from "../../utils/hostingPreferences" //for alt API_BASE_Local or Render_Base
 
 export const postsApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: API_BASE_Local,
+    baseUrl: Render_Base,
   }),
   reducerPath: "postsApi",
   // Tag types are used for caching and invalidation.
