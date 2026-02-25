@@ -11,6 +11,7 @@
   --color-bgNav: rgba(28, 26, 48, 1);
   --text-reSizing: clamp(0.9rem, 2vw, 1.6rem);
   --color-divider: rgba(77,57,93,1);
+  --color-primary: rgba(255,255,255,1)
 }
 
 :root {
