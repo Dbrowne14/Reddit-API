@@ -15,7 +15,7 @@ export const SideAccordion = ({title, text}: textProps) => {
     <Accordion type="single" collapsible defaultValue="item-1" className="pl-2">
       <AccordionItem value="item-1" >
         <AccordionTrigger className="explainersStyles">{title}</AccordionTrigger>
-        <AccordionContent className="explainersStyles text-start">{text}</AccordionContent>
+        <AccordionContent className="explainersStyles text-start text-[whiteSmoke]">{text}</AccordionContent>
       </AccordionItem>
     </Accordion>
   )
