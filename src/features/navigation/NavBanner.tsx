@@ -19,15 +19,17 @@ export const Banner: React.FC = () => {
 
   return (
     <div className="w-full h-fit">
-      <div className="w-full pt-1  bg-bgNav border-b-12 border-b-bgCustom  md:border-none md:rounded-2xl md:px-4 md:py-4">
-        <div
-          className={`flex items-center justify-center gap-4 transition-[max-height,margin,padding] duration-300 ease-in-out ${hidden ? "max-h-0 m-0 p-0 opacity-0" : "max-h-40 p-2 opacity-100"} md:max-h-full md:opacity-100 md:p-0`}
-        >
-          <h1 className={`text-[clamp(2.5rem,4vw,4rem)] mt-2 `}>r/RedCanvas</h1>
-          <img src={Favicon} className="md:h-28 h-18" />
+      <div className="w-full pt-1 flex flex-col gap-8  bg-bgNav md:bg-bgCustom border-b-12 border-b-bgCustom  md:border-none md:rounded-2xl md:px-4 md:py-4">
+        <div className="flex flex-col rounded-2xl bg-bgNav md:p-2">
+          <div
+            className={`flex items-end justify-center gap-4 transition-[max-height,margin,padding] duration-300 ease-in-out ${hidden ? "max-h-0 m-0 p-0 opacity-0" : "max-h-40 p-0 opacity-100"} md:max-h-full md:opacity-100 md:p-0`}
+          >
+            <h1 className={`text-[clamp(2.5rem,4vw,4rem)] mt-2 `}>r/RedCanvas</h1>
+            <img src={Favicon} className="md:h-28 h-18" />
+          </div>
+          <div className="text-[1.1rem] font-bold text-[rgba(200,157,214,0.5)] italic md:text-start">A curated selection of the best subReddit galleries</div>
         </div>
-
-        <div className="w-full flex flex-row md:flex-col md:gap-7 pt-4">
+        <div className="w-full flex flex-row md:flex-col md:gap-7 pt-4 rounded-2xl bg-bgNav ">
           {subRedditList.map((subreddit, index) => {
             return <Bucket key={index} bucketName={subreddit} />
           })}
