@@ -29,7 +29,7 @@ export const Banner: React.FC = () => {
           </div>
           <div className="text-[1.1rem] font-bold text-[rgba(200,157,214,0.5)] italic md:text-start">A curated selection of the best subReddit galleries</div>
         </div>
-        <div className="w-full flex flex-row md:flex-col md:gap-7 pt-4 rounded-2xl bg-bgNav ">
+        <div className="w-full flex flex-row md:flex-col md:gap-7 pt-4 md:py-0.5 rounded-2xl bg-bgNav ">
           {subRedditList.map((subreddit, index) => {
             return <Bucket key={index} bucketName={subreddit} />
           })}
