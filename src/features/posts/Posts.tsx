@@ -7,27 +7,26 @@ export interface SubredditPosts {
   [subreddit: string]: PostType[]
 }
 
-
 export const Posts: React.FC = () => {
   const selectedBucket = useAppSelector(state => state.bucket.selectedBucket)
   console.log(selectedBucket)
 
-  const {data, isLoading, error} = useGetPostsQuery({
-    subReddit: selectedBucket
+  const { data, isLoading, error } = useGetPostsQuery({
+    subReddit: selectedBucket,
   })
 
-  if(isLoading) return <div>Loading...</div>
-  if(error || !data) return <div>error loading posts</div>
+  if (isLoading) return <div>Loading...</div>
+  if (error || !data) return <div>error loading posts</div>
 
-
+  console.log("error from useGetPostsQuery:", error)
   return (
     <>
       {data?.posts
-      .filter(post => post.media !== null) // where no media returned
-      .filter(post => !post.title?.toLowerCase().includes("nsfw")) //clear out any inappropriate
-      .map((post, index) => (
-        <Post key={index} data={post} id={index} />
-      ))}
+        .filter(post => post.media !== null) // where no media returned
+        .filter(post => !post.title?.toLowerCase().includes("nsfw")) //clear out any inappropriate
+        .map((post, index) => (
+          <Post key={index} data={post} id={index} />
+        ))}
     </>
   )
 }

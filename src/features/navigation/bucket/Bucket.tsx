@@ -7,6 +7,7 @@ import type { SerializedError } from "@reduxjs/toolkit"
 import RedditLogo from "../../../assets/RedCanvasFavicon.png"
 import { formatSubCount } from "../../../utils/utilityFns"
 import { useAppSelector } from "../../../app/hooks"
+import { Spinner } from "@/components/ui/spinner"
 
 const checkImg = (img: string | undefined) => {
   if (!img) {
@@ -21,7 +22,12 @@ export const Bucket = ({ bucketName }: { bucketName: string }) => {
   const { data, isLoading, error } = useGetSubQuery(bucketName)
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return (
+      <div className="h-full">
+        <Spinner className="size-8"/>
+        <p className="text-2xl">Loading...</p>
+      </div>
+    )
   }
   if (error) {
     console.log("RTK Query Error:", error)

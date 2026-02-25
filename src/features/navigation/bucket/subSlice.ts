@@ -1,13 +1,11 @@
-// subCount: subAboutJson.data.subscribers,
-// image: findImg(subAboutJson)
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import type { SubReddit } from "../../../types/types"
-import {Render_Base } from "../../../utils/hostingPreferences" //for alt API_BASE_Local
+import { API_BASE_Local } from "../../../utils/hostingPreferences" //for alt API_BASE_Local or Render_Base
 
 export const subSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: Render_Base 
+    baseUrl: API_BASE_Local,
   }),
   reducerPath: "subApi",
   // Tag types are used for caching and invalidation.
