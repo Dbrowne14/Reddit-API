@@ -16,7 +16,7 @@ export function ProgressBar({ isLoading }: { isLoading: boolean }) {
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 90) return prev // max 90% until finished
-        return prev + Math.random() * 9 // random increment
+        return prev + Math.random() * 5 // random increment
       })
     }, 300)
 
