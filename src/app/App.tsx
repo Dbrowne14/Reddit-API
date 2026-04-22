@@ -20,9 +20,3 @@ export const App = () => (
   </div>
 )
 
-/*   .posts-area {
-    column-count: 3;
-    column-gap: 2rem; 
-    padding: 2rem;
-  } 
-*/
